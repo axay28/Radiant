@@ -3,11 +3,13 @@
 🚀 **Live Demo:** [radiant.rarepath.ai](https://radiant.rarepath.ai)  
 
 ## 📌 Overview  
-Radiant is an AI-powered chatbot designed to assist with [describe use case briefly]. Built using Llama-2, Flask, and React, it delivers intelligent responses and seamless user interaction.
+Radiant is an AI-powered chatbot designed to assist with Queries related to Rare Diseases. This project was presented at the **Rare Disease AI Hackathon** at **GitHub HQ, San Francisco**, sponsored by **Research to The People**.  
+
+⚠️ **Note:** The latest version of this code is **proprietary**. This repository contains an earlier open-source implementation.  
 
 ## 🛠️ Tech Stack  
-- **Backend:** Python, Flask, Llama-2  
-- **Frontend:** React, TailwindCSS  
+- **Backend:** Python, Flask, Llama-2, GPT-3.5  
+- **Frontend:** Angular  
 - **Deployment:** Docker, AWS  
 
 ## 🚀 Installation  
@@ -25,7 +27,7 @@ python app.py
 ```
 
 ## 📄 White Paper  
-For an in-depth understanding, read the white paper: [Link to White Paper]  
+For an in-depth understanding, read the white paper: [https://radiant.rarepath.ai/whitepaper]  
 
 ## 📬 Contact  
-For inquiries or collaboration, reach out at: [Your Email]  
+For inquiries or collaboration, reach out at: [mulgunda@oregonstate.edu]  
