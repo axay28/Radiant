@@ -1,0 +1,207 @@
+/* General styles */
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: rgb(75, 75, 75); /* Consistent dark background */
+    margin: 0;
+    overflow: hidden;
+}
+
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.row {
+    flex: 1;
+    display: flex;
+    overflow: hidden; /* Hide overflow from sidebar and main content */
+    background-color: rgb(75, 75, 75); /* Consistent background */
+}
+
+.sidebar {
+    background-color: black; /* Sidebar background color */
+    border-top-right-radius: 3%;
+    border-bottom-right-radius: 3%;
+    color: #fff; /* Text color */
+    padding: 20px;
+}
+
+.sidebar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.sidebar button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #dd5f0d;
+    border: 1px solid #dd5f0d;
+    color: white;
+    border-radius: 5px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.sidebar button:hover {
+    color: black;
+}
+
+/* New styles for vertical radio buttons */
+.tw-toggle label {
+    display: block; /* Makes each label take up the full width */
+    margin-bottom: 10px; /* Adds spacing between the labels */
+}
+
+/* Chat area styling */
+.chat-area {
+    flex: 1;
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 20px;
+    background-color: rgb(75, 75, 75);
+    margin-bottom: 60px; /* Space for the input box */
+}
+
+.messages {
+    max-height: calc(100vh - 60px); /* Limit height for messages area */
+    overflow-y: auto; /* Enable scrolling for messages */
+    padding: 0 20px;
+}
+
+/* Template Questions Styling */
+.template-questions {
+    display: inline-block;
+    width: 45%; /* Adjust width as needed */
+    margin: 10px; /* Margin between buttons */
+}
+
+.template-questions .btn {
+    width: 100%;
+    height: 80px; /* Fixed height */
+    padding: 10px;
+    background-color: #dd5f0d; /* Keep bright orange background */
+    color: #fff; /* White text for contrast */
+    font-size: 16px; /* Adjust font size for balance */
+    font-weight: bold; /* Bold text for emphasis */
+    border-radius: 10px; /* Adjust rounded corners */
+    text-align: center; /* Center text */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.template-questions .btn:hover {
+    background-color: #e76b27;
+}
+
+/* Message bubbles styling */
+.response-item {
+    clear: both;
+    overflow: hidden;
+    border-radius: 15px; /* Rounded corners for consistency */
+    font-size: 14px;
+    max-width: 80%; /* Adjust maximum width of the bubble */
+    margin-bottom: 10px;
+    padding: 10px;
+    word-wrap: break-word; /* Ensure long words break and wrap */
+    display: inline-block; /* Display bubbles inline */
+}
+
+.response-item.user-message {
+    background-color: #dd5f0d; /* User message background color */
+    color: #fff; /* Text color */
+    float: right;
+    text-align: left;
+    border-radius: 15px 15px 0px 15px;
+}
+
+.response-item.chatbot-message {
+    background-color: #f0f0f0; /* Chatbot message background color */
+    color: #000; /* Text color */
+    float: left;
+    text-align: left;
+    border-radius: 15px 15px 15px 0px;
+}
+
+.response-item .text-block {
+    display: inline-block;
+    max-width: 80%; /* Limit text block width */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* User input area */
+.user-box {
+    width: 100%;
+    max-width: 1000px;
+    position: fixed;
+    bottom: 0;
+    left: 30%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+@media (min-width: 800px) {
+    .user-box {
+        max-width: 800px;
+        left: 50%;
+        transform: translateX(-30%);
+    }
+}
+
+.user-box textarea {
+    resize: none; /* Disable textarea resizing */
+    border: none; /* Remove border */
+    width: calc(100% - 100px); /* Adjust width */
+    padding: 10px;
+    border-radius: 5px 5px 0 5px;
+    outline: none;
+    font-size: 14px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+    height: 40px; /* Set fixed height */
+    overflow: hidden; /* Prevent multi-line display */
+}
+
+.user-box button {
+    width: 100px; /* Button width */
+    border: none;
+    background-color: #dd5f0d;
+    color: white;
+    border-radius: 0 5px 5px 0; /* Rounded corners */
+    cursor: pointer;
+    font-size: 14px;
+    height: 40px; /* Match height of textarea */
+}
+
+.user-box button:hover {
+    background-color: #e76b27;
+}
+
+/* Typing Bubble Styles */
+.typing-bubble .text-block {
+    background-color: #e0e0e0;
+    color: #555;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column; /* Stack columns on smaller screens */
+    }
+
+    .sidebar {
+        width: 100%; /* Full width sidebar */
+    }
+
+    .user-box {
+        width: 100%;
+        border-radius: 0; /* Remove border-radius for full width */
+    }
+}
