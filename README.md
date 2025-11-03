@@ -1,6 +1,6 @@
 # Radiant Chatbot 🌟  
 
-🚀 **Live Demo:** [radiant.rarepath.ai](https://radiant.rarepath.ai)  
+🚀 **Live Demo:** [radiant.rarepath.ai](https://radiant.rtx.ai)  
 
 ## 📌 Overview  
 Radiant is an AI-powered chatbot designed to assist with Queries related to Rare Diseases. This project was presented at the **Rare Disease AI Hackathon** at **GitHub HQ, San Francisco**, sponsored by **Research to The People**.  
