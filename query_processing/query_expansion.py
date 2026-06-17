@@ -5,7 +5,7 @@ from langchain.output_parsers import PydanticToolsParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 
-openai.api_key = os.getenv("OPENAI_API")
+openai.api_key = os.getenv("OPENAI_API_KEY") or os.getenv("OPENAI_API")
 
 class ParaphrasedQuery(BaseModel):
     """You have performed query expansion to generate a paraphrasing of a question."""

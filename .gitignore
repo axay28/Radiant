@@ -15,6 +15,7 @@ rare-hack-env/
 # Local environment and credentials
 .env
 .env.*
+!.env.example
 credentials.json
 
 # Node and Angular

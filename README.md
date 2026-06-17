@@ -1,12 +1,14 @@
 # Radiant
 
-Radiant is a retrieval-augmented chat prototype for rare disease knowledge exploration. It combines query expansion, vector search, document reranking, and large language model generation to answer questions about rare diseases with links back to retrieved source material.
+Radiant is a retrieval-augmented chat agent for rare disease knowledge exploration. It combines query expansion, vector search, document reranking, and large language model generation to answer rare disease questions with links back to retrieved source material.
 
 Project website: [radiant.rtx.ai](https://radiant.rtx.ai)
 
-This project was presented at the Rare Disease AI Hackathon at GitHub HQ in San Francisco, sponsored by Research to the People. The latest production version is proprietary; this repository contains an earlier open-source implementation.
+Paper: [Using AI to Improve Diagnosis and Treatment of Rare Diseases: A Chat Agent for Equitable and Accessible Healthcare](https://link.springer.com/chapter/10.1007/978-3-031-95841-0_35)
 
-The current prototype focuses on hypophosphatasia and Ehlers-Danlos Syndrome. It was built as part of the Radiant organization and is described in the Springer AIME 2025 conference paper, "Using AI to Improve Diagnosis and Treatment of Rare Diseases: A Chat Agent for Equitable and Accessible Healthcare."
+This project was presented at the Rare Disease AI Hackathon at GitHub HQ in San Francisco, sponsored by Research to the People. Radiant was also accepted into Oregon State University's Advantage Accelerator program and is described in the Springer AIME 2025 proceedings.
+
+> Repository scope: the latest deployed Radiant production system is separate from this public repository. This repository contains an earlier open-source implementation of the RAG prototype: Flask backend, Angular frontend, Chroma retrieval, LangChain query processing, OpenAI generation/embeddings, and Amazon Bedrock Llama generation.
 
 > Medical safety note: this project is an experimental research prototype. It is not a medical device, does not provide medical diagnosis or treatment, and should not be used as a substitute for advice from qualified clinicians.
 
@@ -19,6 +21,13 @@ The current prototype focuses on hypophosphatasia and Ehlers-Danlos Syndrome. It
 - Generates responses with GPT-4o or Llama 3 through Amazon Bedrock.
 - Returns source URLs from the retrieved documents when available.
 - Maintains a compact conversation summary for follow-up questions.
+
+## Published And Public Context
+
+- Springer AIME 2025 paper: Radiant is described as an LLM/RAG chat agent with a domain-specific vector database, clickable primary-source references, and reranking to reduce hallucination and overgeneralization risk.
+- Oregon State University story: Radiant is described as an AI chatbot for rare disease diagnosis support, backed by curated biomedical literature, source citations, AWS Bedrock, and AWS/Advantage Accelerator support.
+- Resume/project source of truth: broader Radiant work includes a full RAG pipeline using LLaMA 3.1 405B, OpenAI embeddings, ChromaDB, approximately 50,000 curated articles, 20 rare genetic diseases, AWS deployment, and latency work with ONNX and FP16 quantization.
+- Public live site: `radiant.rtx.ai` currently serves a separate Vite/React 18 app with guest and authenticated chat flows. This repo's open-source frontend is Angular.
 
 ## Tech Stack
 
@@ -40,6 +49,7 @@ The current prototype focuses on hypophosphatasia and Ehlers-Danlos Syndrome. It
 │   ├── reranker.py                # MaxSim document reranking
 │   └── summarizer.py              # Follow-up context summarization
 ├── frontend/                      # Angular chat interface
+├── docs/                          # Architecture and verification notes
 ├── Examples/                      # Example evaluation queries and responses
 ├── static/ and templates/         # Legacy Flask static/template files
 └── requirements.txt               # Python backend dependencies
@@ -53,7 +63,7 @@ The current prototype focuses on hypophosphatasia and Ehlers-Danlos Syndrome. It
 - OpenAI API credentials
 - AWS credentials with access to the Bedrock model configured in `query_processing/generation.py`
 
-The backend expects a Chroma collection named `vector-store-rare-diseases1` with document text, embeddings, and metadata that includes `URL` when citation links are available.
+The backend expects a Chroma collection named `vector-store-rare-diseases1` with document text, embeddings, and metadata that includes `URL` when citation links are available. This repository does not include the private/production vector database or source corpus.
 
 ## Backend Setup
 
@@ -63,7 +73,9 @@ cd Radiant
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+cp .env.example .env
 export OPENAI_API_KEY="your-openai-api-key"
+export AWS_REGION="your-aws-region"
 flask --app app run
 ```
 
@@ -78,6 +90,13 @@ npm start
 ```
 
 The Angular app runs at `http://localhost:4200/` by default. The Flask backend runs at `http://localhost:5000/` by default.
+
+## Current Verification Status
+
+- Python syntax check passes.
+- Angular production build passes after `npm ci`.
+- Full end-to-end RAG requires OpenAI credentials, AWS Bedrock access, a running Chroma server, and the populated `vector-store-rare-diseases1` collection.
+- A live-site guest API probe on June 17, 2026 reached `radiant.rtx.ai` but returned an application-level generation error. See [docs/VERIFICATION.md](docs/VERIFICATION.md) for details.
 
 ## API
 
@@ -99,11 +118,17 @@ Request body:
 
 For more background, see the Springer conference paper: [Using AI to Improve Diagnosis and Treatment of Rare Diseases: A Chat Agent for Equitable and Accessible Healthcare](https://link.springer.com/chapter/10.1007/978-3-031-95841-0_35).
 
+## Additional Documentation
+
+- [Architecture](docs/ARCHITECTURE.md)
+- [Verification notes](docs/VERIFICATION.md)
+
 ## Development Notes
 
 - Do not commit generated dependency folders such as `node_modules/`, Angular `.angular/` cache files, virtual environments, or local OS files.
 - Example CSV/PDF files are included for reproducibility and evaluation context.
 - The notebook is exploratory and may require model downloads or GPU resources.
+- If documenting production-only features such as authentication, chat-history persistence, SQLite, or deployment internals, keep them clearly separate from this open-source prototype unless the corresponding code is added here.
 
 ## Contact
 

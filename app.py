@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import logging
 import os
 from query_processing.query_processor import process_query
@@ -7,10 +8,12 @@ log.setLevel(logging.ERROR)
 # initialize Flask app
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", os.urandom(24))
-# CORS(app, supports_credentials=True, origins=["https://localhost:4200"])
+CORS(
+    app,
+    resources={r"/*": {"origins": os.environ.get("CORS_ORIGINS", "http://localhost:4200").split(",")}},
+)
 
 @app.route('/get_response', methods=['POST', 'OPTIONS'])
-# @cross_origin(origin='http://localhost:4200', supports_credentials=True)  # Ensure correct origin
 def get_response():
     if request.method == 'OPTIONS':
         return ('', 204)
