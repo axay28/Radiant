@@ -2,11 +2,11 @@
 
 Radiant is a retrieval-augmented chat prototype for rare disease knowledge exploration. It combines query expansion, vector search, document reranking, and large language model generation to answer questions about rare diseases with links back to retrieved source material.
 
-Live demo: [radiant.rarepath.ai](https://radiant.rarepath.ai)
+Project website: [radiant.rtx.ai](https://radiant.rtx.ai)
 
 This project was presented at the Rare Disease AI Hackathon at GitHub HQ in San Francisco, sponsored by Research to the People. The latest production version is proprietary; this repository contains an earlier open-source implementation.
 
-The current prototype focuses on hypophosphatasia and Ehlers-Danlos Syndrome. It was built as part of the RarePath/Radiant effort described in the Radiant white paper, "Leveraging AI to improve diagnosis and treatment of rare diseases: a chat agent for equitable and accessible healthcare," from Oregon State University collaborators.
+The current prototype focuses on hypophosphatasia and Ehlers-Danlos Syndrome. It was built as part of the Radiant organization and is described in the Springer AIME 2025 conference paper, "Using AI to Improve Diagnosis and Treatment of Rare Diseases: A Chat Agent for Equitable and Accessible Healthcare."
 
 > Medical safety note: this project is an experimental research prototype. It is not a medical device, does not provide medical diagnosis or treatment, and should not be used as a substitute for advice from qualified clinicians.
 
@@ -95,9 +95,9 @@ Request body:
 
 `modelSelection` may be `gpt`, `llama`, or any other value to request both configured models.
 
-## White Paper
+## Paper
 
-For more background, see the Radiant white paper: [radiant.rarepath.ai/whitepaper](https://radiant.rarepath.ai/whitepaper)
+For more background, see the Springer conference paper: [Using AI to Improve Diagnosis and Treatment of Rare Diseases: A Chat Agent for Equitable and Accessible Healthcare](https://link.springer.com/chapter/10.1007/978-3-031-95841-0_35).
 
 ## Development Notes
 
@@ -111,9 +111,14 @@ For inquiries or collaboration, contact [mulgunda@oregonstate.edu](mailto:mulgun
 
 ## Citation And Project Context
 
-If you use this repository in research or demos, cite the related Radiant/RarePath work and link back to the public repository:
+If you use this repository in research or demos, cite the related Radiant work and link back to the public repository:
 
 ```text
-Radiant: retrieval-augmented AI chat for rare disease knowledge exploration.
-GitHub: https://github.com/axay28/Radiant
+Hodges, F.M., Pullela, S., Cohen, G., Mulgund, A., Roach, J.C., Ramsey, S.A. (2025).
+Using AI to Improve Diagnosis and Treatment of Rare Diseases: A Chat Agent for Equitable and Accessible Healthcare.
+In: Bellazzi, R., Juarez Herrero, J.M., Sacchi, L., Zupan, B. (eds) Artificial Intelligence in Medicine.
+AIME 2025. Lecture Notes in Computer Science, vol 15735. Springer, Cham.
+https://doi.org/10.1007/978-3-031-95841-0_35
+
+Code: https://github.com/axay28/Radiant
 ```
