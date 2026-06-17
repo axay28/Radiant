@@ -1,11 +1,11 @@
 import fitz  
 import csv
 import time
-from query_expansion import get_expanded_queries, decorate_query
-from database_retrieval import embed_query, get_documents
-from reranker import MaxSimReranker
-from hallucination_grader import check_hallucination
-from generation import generate
+from query_processing.query_expansion import get_expanded_queries, decorate_query
+from query_processing.database_retrieval import embed_query, get_documents
+from query_processing.reranker import MaxSimReranker
+from query_processing.hallucination_grader import check_hallucination
+from query_processing.generation import generate_gpt, generate_llama
 
 def extract_questions_from_pdf(pdf_path):
     questions = []
@@ -45,10 +45,11 @@ def process_query(query):
 
     top_documents = ranked_documents[:3]
 
-    gpt_response, llama_response = generate(decorated_query, top_documents)
+    gpt_response = generate_gpt(decorated_query, top_documents, "")
+    llama_response = generate_llama(decorated_query, top_documents, "")
 
-    check_hallucination(gpt_response, decorated_query, ranked_documents)
-    check_hallucination(llama_response, decorated_query, ranked_documents)
+    check_hallucination(decorated_query, gpt_response, ranked_documents)
+    check_hallucination(decorated_query, llama_response, ranked_documents)
 
     end_time = time.time()  
     response_time = end_time - start_time
@@ -82,9 +83,10 @@ def process_and_save_responses(questions, output_file):
             average_response_time = total_response_time / (i + 1)
             print(f"Updated average response time per question: {average_response_time:.2f} seconds")
 
-pdf_path = 'List_Of_Questions.pdf'  
-output_file = 'new_responses.csv'  
-questions = extract_questions_from_pdf(pdf_path)
+if __name__ == "__main__":
+    pdf_path = 'List_Of_Questions.pdf'  
+    output_file = 'new_responses.csv'  
+    questions = extract_questions_from_pdf(pdf_path)
 
-# Process all questions
-process_and_save_responses(questions, output_file)
+    # Process all questions
+    process_and_save_responses(questions, output_file)

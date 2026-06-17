@@ -1,0 +1,40 @@
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+rare-hack-env/
+*.log
+
+# Local environment and credentials
+.env
+.env.*
+credentials.json
+
+# Node and Angular
+node_modules/
+frontend/node_modules/
+.angular/
+frontend/.angular/
+dist/
+frontend/dist/
+tmp/
+out-tsc/
+bazel-out/
+coverage/
+frontend/npm-debug.log
+frontend/yarn-error.log
+
+# Editors
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/

@@ -1,22 +1,27 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for, session
+from flask import Flask, request, jsonify
 import logging
-from flask_cors import CORS, cross_origin
-import time
 import os
 from query_processing.query_processor import process_query
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 # initialize Flask app
 app = Flask(__name__)
-app.secret_key = os.urandom(24)
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", os.urandom(24))
 # CORS(app, supports_credentials=True, origins=["https://localhost:4200"])
 
 @app.route('/get_response', methods=['POST', 'OPTIONS'])
 # @cross_origin(origin='http://localhost:4200', supports_credentials=True)  # Ensure correct origin
 def get_response():
-    model_selection = request.json['modelSelection']
-    user_input = request.json['userQuery']
-    current_summary = request.json['currentSummary']
+    if request.method == 'OPTIONS':
+        return ('', 204)
+
+    payload = request.get_json(silent=True) or {}
+    model_selection = payload.get('modelSelection', 'both')
+    user_input = payload.get('userQuery', '').strip()
+    current_summary = payload.get('currentSummary', '')
+
+    if not user_input:
+        return jsonify({"error": "userQuery is required"}), 400
 
     # response: [gpt_response, llama_response, summary]
     # model response object: {"agentName": "", "agentResp": "", "urls": [], "summary": ""}
