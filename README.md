@@ -1,4 +1,19 @@
-# Radiant
+<p align="center">
+  <img src="docs/assets/radiant-logo.svg" alt="Radiant logo" width="96" />
+</p>
+
+<h1 align="center">Radiant</h1>
+
+<p align="center">
+  <strong>An evidence-grounded RAG chat agent for rare disease knowledge exploration.</strong>
+</p>
+
+<p align="center">
+  <a href="https://radiant.rtx.ai">Live site</a> |
+  <a href="https://link.springer.com/chapter/10.1007/978-3-031-95841-0_35">Springer AIME 2025 paper</a> |
+  <a href="docs/ARCHITECTURE.md">Architecture</a> |
+  <a href="docs/VERIFICATION.md">Verification</a>
+</p>
 
 Radiant is a retrieval-augmented chat agent for rare disease knowledge exploration. It combines query expansion, vector search, document reranking, and large language model generation to answer rare disease questions with links back to retrieved source material.
 
@@ -11,6 +26,14 @@ This project was presented at the Rare Disease AI Hackathon at GitHub HQ in San 
 > Repository scope: the latest deployed Radiant production system is separate from this public repository. This repository contains an earlier open-source implementation of the RAG prototype: Flask backend, Angular frontend, Chroma retrieval, LangChain query processing, OpenAI generation/embeddings, and Amazon Bedrock Llama generation.
 
 > Medical safety note: this project is an experimental research prototype. It is not a medical device, does not provide medical diagnosis or treatment, and should not be used as a substitute for advice from qualified clinicians.
+
+## Live Interface
+
+![Radiant guest chat interface with a rare disease question typed into the input](docs/assets/radiant-guest-question.jpg)
+
+## Architecture
+
+![Radiant retrieval-augmented generation architecture](docs/assets/radiant-rag-architecture.svg)
 
 ## What It Does
 

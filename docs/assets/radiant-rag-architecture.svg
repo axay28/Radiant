@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-labelledby="title desc">
+  <title id="title">Radiant RAG architecture</title>
+  <desc id="desc">Radiant architecture from user query to expansion, embeddings, Chroma retrieval, reranking, LLM generation, and cited answer.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#fff7ed"/><stop offset="50%" stop-color="#ffffff"/><stop offset="100%" stop-color="#eff6ff"/></linearGradient>
+    <linearGradient id="accent" x1="0" x2="1"><stop offset="0%" stop-color="#f97316"/><stop offset="100%" stop-color="#dc2626"/></linearGradient>
+    <filter id="shadow" x="-10%" y="-20%" width="120%" height="150%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/></filter>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto"><path d="M0 0 14 7 0 14z" fill="#475569"/></marker>
+    <style>
+      .title{font:700 38px Inter,ui-sans-serif,system-ui,sans-serif;fill:#0f172a}.subtitle{font:400 18px Inter,ui-sans-serif,system-ui,sans-serif;fill:#475569}.label{font:700 19px Inter,ui-sans-serif,system-ui,sans-serif;fill:#0f172a}.body{font:400 14px Inter,ui-sans-serif,system-ui,sans-serif;fill:#475569}.pill{font:700 12px Inter,ui-sans-serif,system-ui,sans-serif;fill:#9a3412;letter-spacing:.04em}.card{fill:#fff;stroke:#e2e8f0;stroke-width:1.5;filter:url(#shadow)}.line{stroke:#475569;stroke-width:2.4;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1200" height="560" rx="34" fill="url(#bg)"/>
+  <g transform="translate(54 52)">
+    <path d="M19 0c13 0 17 13 22 23C46 13 50 0 63 0c14 0 24 11 24 26 0 29-46 53-46 53S-5 55-5 26C-5 11 5 0 19 0z" fill="url(#accent)"/>
+    <text class="title" x="112" y="34">Radiant</text>
+    <text class="subtitle" x="112" y="66">Evidence-grounded rare disease question answering with retrieval-augmented generation</text>
+  </g>
+  <g transform="translate(70 145)"><rect class="card" width="178" height="118" rx="18"/><text class="pill" x="22" y="32">INPUT</text><text class="label" x="22" y="62">User question</text><text class="body" x="22" y="90">Rare disease query</text></g>
+  <path class="line" d="M260 204h70"/>
+  <g transform="translate(345 145)"><rect class="card" width="190" height="118" rx="18"/><text class="pill" x="22" y="32">LANGCHAIN</text><text class="label" x="22" y="62">Query expansion</text><text class="body" x="22" y="90">Abbreviations + variants</text></g>
+  <path class="line" d="M548 204h70"/>
+  <g transform="translate(635 145)"><rect class="card" width="190" height="118" rx="18"/><text class="pill" x="22" y="32">OPENAI</text><text class="label" x="22" y="62">Embeddings</text><text class="body" x="22" y="90">Semantic query vector</text></g>
+  <path class="line" d="M838 204h70"/>
+  <g transform="translate(925 145)"><rect class="card" width="205" height="118" rx="18"/><text class="pill" x="22" y="32">CHROMA</text><text class="label" x="22" y="62">Vector retrieval</text><text class="body" x="22" y="90">Curated literature chunks</text></g>
+  <path class="line" d="M1028 276v59"/>
+  <g transform="translate(925 350)"><rect class="card" width="205" height="118" rx="18"/><text class="pill" x="22" y="32">RELEVANCE</text><text class="label" x="22" y="62">Reranking</text><text class="body" x="22" y="90">MaxSim-style scoring</text></g>
+  <path class="line" d="M925 409h-80"/>
+  <g transform="translate(635 350)"><rect class="card" width="190" height="118" rx="18"/><text class="pill" x="22" y="32">LLM</text><text class="label" x="22" y="62">Generation</text><text class="body" x="22" y="90">GPT-4o / Llama 3</text></g>
+  <path class="line" d="M622 409h-74"/>
+  <g transform="translate(345 350)"><rect class="card" width="190" height="118" rx="18"/><text class="pill" x="22" y="32">SAFETY</text><text class="label" x="22" y="62">Grounding</text><text class="body" x="22" y="90">Context-limited answer</text></g>
+  <path class="line" d="M332 409h-72"/>
+  <g transform="translate(70 350)"><rect class="card" width="178" height="118" rx="18"/><text class="pill" x="22" y="32">OUTPUT</text><text class="label" x="22" y="62">Cited response</text><text class="body" x="22" y="90">Clickable source links</text></g>
+  <g transform="translate(388 292)"><rect width="424" height="34" rx="17" fill="#fff7ed" stroke="#fed7aa"/><text class="body" x="24" y="22" fill="#9a3412">Retrieval and reranking ground each answer in source evidence before generation</text></g>
+</svg>
