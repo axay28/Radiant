@@ -155,7 +155,7 @@ For more background, see the Springer conference paper: [Using AI to Improve Dia
 
 ## Contact
 
-For inquiries or collaboration, contact [mulgunda@oregonstate.edu](mailto:mulgunda@oregonstate.edu).
+For inquiries or collaboration, contact [mulgunda@oregonstate.edu](mailto:axay28@gmail.com).
 
 ## Citation And Project Context
 
